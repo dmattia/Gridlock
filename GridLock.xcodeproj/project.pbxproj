@@ -14,6 +14,7 @@
 		F170AE381C5887D00093EC23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F170AE361C5887D00093EC23 /* LaunchScreen.storyboard */; };
 		F170AE431C5887D00093EC23 /* GridLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE421C5887D00093EC23 /* GridLockTests.swift */; };
 		F170AE4E1C5887D00093EC23 /* GridLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE4D1C5887D00093EC23 /* GridLockUITests.swift */; };
+		F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F170AE491C5887D00093EC23 /* GridLockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridLockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F170AE4D1C5887D00093EC23 /* GridLockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLockUITests.swift; sourceTree = "<group>"; };
 		F170AE4F1C5887D00093EC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridlockViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				F170AE2D1C5887D00093EC23 /* AppDelegate.swift */,
 				F170AE2F1C5887D00093EC23 /* ViewController.swift */,
 				F170AE311C5887D00093EC23 /* Main.storyboard */,
+				F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */,
 				F170AE341C5887D00093EC23 /* Assets.xcassets */,
 				F170AE361C5887D00093EC23 /* LaunchScreen.storyboard */,
 				F170AE391C5887D00093EC23 /* Info.plist */,
@@ -258,6 +261,7 @@
 			files = (
 				F170AE301C5887D00093EC23 /* ViewController.swift in Sources */,
 				F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */,
+				F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
