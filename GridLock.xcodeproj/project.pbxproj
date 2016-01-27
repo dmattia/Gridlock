@@ -29,6 +29,9 @@
 		F170AE7E1C589B940093EC23 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE7D1C589B940093EC23 /* SystemConfiguration.framework */; };
 		F170AE801C589B9B0093EC23 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE7F1C589B9B0093EC23 /* libz.tbd */; };
 		F170AE821C589BA60093EC23 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE811C589BA60093EC23 /* libsqlite3.tbd */; };
+		F170AE841C589C670093EC23 /* ParseLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE831C589C670093EC23 /* ParseLogInViewController.swift */; };
+		F170AE861C589D0E0093EC23 /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F170AE851C589D0E0093EC23 /* Pacifico.ttf */; };
+		F170AE881C589F6B0093EC23 /* ParseSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE871C589F6B0093EC23 /* ParseSignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,9 @@
 		F170AE7D1C589B940093EC23 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F170AE7F1C589B9B0093EC23 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		F170AE811C589BA60093EC23 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		F170AE831C589C670093EC23 /* ParseLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLogInViewController.swift; sourceTree = "<group>"; };
+		F170AE851C589D0E0093EC23 /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
+		F170AE871C589F6B0093EC23 /* ParseSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,9 +165,12 @@
 		F170AE2C1C5887D00093EC23 /* GridLock */ = {
 			isa = PBXGroup;
 			children = (
+				F170AE851C589D0E0093EC23 /* Pacifico.ttf */,
 				F170AE2D1C5887D00093EC23 /* AppDelegate.swift */,
 				F170AE311C5887D00093EC23 /* Main.storyboard */,
 				F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */,
+				F170AE831C589C670093EC23 /* ParseLogInViewController.swift */,
+				F170AE871C589F6B0093EC23 /* ParseSignUpViewController.swift */,
 				F170AE341C5887D00093EC23 /* Assets.xcassets */,
 				F170AE361C5887D00093EC23 /* LaunchScreen.storyboard */,
 				F170AE391C5887D00093EC23 /* Info.plist */,
@@ -293,6 +302,7 @@
 			files = (
 				F170AE381C5887D00093EC23 /* LaunchScreen.storyboard in Resources */,
 				F170AE351C5887D00093EC23 /* Assets.xcassets in Resources */,
+				F170AE861C589D0E0093EC23 /* Pacifico.ttf in Resources */,
 				F170AE331C5887D00093EC23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +330,8 @@
 			files = (
 				F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */,
 				F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */,
+				F170AE881C589F6B0093EC23 /* ParseSignUpViewController.swift in Sources */,
+				F170AE841C589C670093EC23 /* ParseLogInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

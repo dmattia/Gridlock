@@ -7,19 +7,44 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
-class GridlockViewController: UIViewController {
+class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     var startTime: NSDate?
     var endTime: NSDate?
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     
+    func displayLogIn() {
+        let loginViewController = ParseLogInViewController()
+        loginViewController.delegate = self
+        
+        loginViewController.fields = [
+            PFLogInFields.UsernameAndPassword,
+            PFLogInFields.LogInButton,
+            PFLogInFields.SignUpButton,
+            PFLogInFields.PasswordForgotten,
+        ]
+        
+        self.presentViewController(loginViewController, animated: true, completion: nil)
+    }
+    
+    func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         dispatch_async(dispatch_get_main_queue(), {
-            //if(PFUser.currentUser() == nil) {
-            //    self.displayLogIn()
-            //}
+            if(PFUser.currentUser() == nil) {
+                self.displayLogIn()
+            }
         })
+    }
+    
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        PFUser.logOut()
+        self.displayLogIn()
     }
     
     override func viewDidLoad() {
