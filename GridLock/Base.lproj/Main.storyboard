@@ -42,10 +42,12 @@
                                 <action selector="logoutButtonPressed:" destination="BYZ-38-t0r" id="xC1-vS-o9Z"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="100" id="uVr-aQ-Rb3"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="endButton" destination="HiB-H6-OM7" id="TtV-i0-AxK"/>
+                        <outlet property="pointValue" destination="uVr-aQ-Rb3" id="yrU-DQ-fgJ"/>
                         <outlet property="startButton" destination="b4R-tr-L28" id="eVr-uV-PvS"/>
                     </connections>
                 </viewController>

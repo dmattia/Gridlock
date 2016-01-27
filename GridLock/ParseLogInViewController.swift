@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class ParseLogInViewController: PFLogInViewController {
+class ParseLogInViewController: PFLogInViewController, PFSignUpViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,5 +30,13 @@ class ParseLogInViewController: PFLogInViewController {
         logInView?.passwordForgottenButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
                 
         self.signUpController = ParseSignUpViewController()
+        self.signUpController?.delegate = self
+    }
+    
+    func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
+        print("Signing up user")
+        user["points"] = 150
+        user.saveInBackground()
+        signUpController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

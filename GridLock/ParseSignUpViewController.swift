@@ -15,6 +15,8 @@ class ParseSignUpViewController : PFSignUpViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.signUpView?.delegate = self
+        
         let logo = UILabel()
         logo.text = "GridLock"
         logo.textColor = UIColor.whiteColor()
@@ -34,5 +36,4 @@ class ParseSignUpViewController : PFSignUpViewController {
         let logoFrame = signUpView!.logo!.frame
         signUpView!.logo!.frame = CGRectMake(logoFrame.origin.x, signUpView!.usernameField!.frame.origin.y - logoFrame.height - 16, signUpView!.frame.width,  logoFrame.height)
     }
-    
 }

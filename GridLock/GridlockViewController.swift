@@ -15,6 +15,14 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     var endTime: NSDate?
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pointValue: UIBarButtonItem!
+    
+    func updatePoints() {
+        let currentUser = PFUser.currentUser()
+        if let userPoints = currentUser?.objectForKey("points") as? NSNumber {
+            self.pointValue.title = "\(userPoints)"
+        }
+    }
     
     func displayLogIn() {
         let loginViewController = ParseLogInViewController()
@@ -40,6 +48,7 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
                 self.displayLogIn()
             }
         })
+        self.updatePoints()
     }
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
@@ -59,10 +68,20 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     
     @IBAction func endButtonPressed(sender: AnyObject) {
         endTime = NSDate()
-        let timeElapsed = endTime?.timeIntervalSinceDate(startTime!)
-        let alert = UIAlertController(title: "Session Ended", message: String(format: "You made it %.1f seconds", timeElapsed!), preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: swapButtonEnabled))
-        self.presentViewController(alert, animated: true, completion: nil)
+        swapButtonEnabled(nil)
+        if let timeElapsed = endTime?.timeIntervalSinceDate(startTime!) {
+            // Add floor of timeElapsed to Score
+            if let currentUser = PFUser.currentUser() {
+                currentUser["points"] = (currentUser["points"] as! Double) + floor(timeElapsed)
+                currentUser.saveInBackgroundWithBlock({ (completed: Bool, error: NSError?) -> Void in
+                    self.updatePoints()
+                })
+            }
+            
+            let alert = UIAlertController(title: "Session Ended", message: String(format: "You made it %.1f seconds", timeElapsed), preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func swapButtonEnabled(alert: UIAlertAction!) {
