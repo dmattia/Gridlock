@@ -14,6 +14,14 @@ class GridlockViewController: UIViewController {
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     
+    override func viewDidAppear(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue(), {
+            //if(PFUser.currentUser() == nil) {
+            //    self.displayLogIn()
+            //}
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.endButton.enabled = false

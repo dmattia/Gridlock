@@ -8,13 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE2D1C5887D00093EC23 /* AppDelegate.swift */; };
-		F170AE301C5887D00093EC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE2F1C5887D00093EC23 /* ViewController.swift */; };
 		F170AE331C5887D00093EC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F170AE311C5887D00093EC23 /* Main.storyboard */; };
 		F170AE351C5887D00093EC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F170AE341C5887D00093EC23 /* Assets.xcassets */; };
 		F170AE381C5887D00093EC23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F170AE361C5887D00093EC23 /* LaunchScreen.storyboard */; };
 		F170AE431C5887D00093EC23 /* GridLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE421C5887D00093EC23 /* GridLockTests.swift */; };
 		F170AE4E1C5887D00093EC23 /* GridLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE4D1C5887D00093EC23 /* GridLockUITests.swift */; };
 		F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */; };
+		F170AE671C589B390093EC23 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE611C589B390093EC23 /* Bolts.framework */; };
+		F170AE681C589B390093EC23 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE621C589B390093EC23 /* Parse.framework */; };
+		F170AE6A1C589B390093EC23 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE641C589B390093EC23 /* ParseFacebookUtilsV4.framework */; };
+		F170AE6B1C589B390093EC23 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE651C589B390093EC23 /* ParseTwitterUtils.framework */; };
+		F170AE6C1C589B390093EC23 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE661C589B390093EC23 /* ParseUI.framework */; };
+		F170AE6E1C589B570093EC23 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE6D1C589B570093EC23 /* AudioToolbox.framework */; };
+		F170AE701C589B5E0093EC23 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE6F1C589B5E0093EC23 /* CFNetwork.framework */; };
+		F170AE721C589B650093EC23 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE711C589B650093EC23 /* CoreGraphics.framework */; };
+		F170AE761C589B7B0093EC23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE751C589B7B0093EC23 /* CoreLocation.framework */; };
+		F170AE781C589B820093EC23 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE771C589B820093EC23 /* QuartzCore.framework */; };
+		F170AE7A1C589B860093EC23 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE791C589B860093EC23 /* Security.framework */; };
+		F170AE7C1C589B8C0093EC23 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE7B1C589B8C0093EC23 /* StoreKit.framework */; };
+		F170AE7E1C589B940093EC23 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE7D1C589B940093EC23 /* SystemConfiguration.framework */; };
+		F170AE801C589B9B0093EC23 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE7F1C589B9B0093EC23 /* libz.tbd */; };
+		F170AE821C589BA60093EC23 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F170AE811C589BA60093EC23 /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +51,6 @@
 /* Begin PBXFileReference section */
 		F170AE2A1C5887D00093EC23 /* GridLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F170AE2D1C5887D00093EC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F170AE2F1C5887D00093EC23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F170AE321C5887D00093EC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F170AE341C5887D00093EC23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F170AE371C5887D00093EC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +62,22 @@
 		F170AE4D1C5887D00093EC23 /* GridLockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLockUITests.swift; sourceTree = "<group>"; };
 		F170AE4F1C5887D00093EC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridlockViewController.swift; sourceTree = "<group>"; };
+		F170AE611C589B390093EC23 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		F170AE621C589B390093EC23 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		F170AE641C589B390093EC23 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		F170AE651C589B390093EC23 /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseTwitterUtils.framework; sourceTree = "<group>"; };
+		F170AE661C589B390093EC23 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		F170AE6D1C589B570093EC23 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		F170AE6F1C589B5E0093EC23 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F170AE711C589B650093EC23 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F170AE731C589B6A0093EC23 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		F170AE751C589B7B0093EC23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F170AE771C589B820093EC23 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F170AE791C589B860093EC23 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F170AE7B1C589B8C0093EC23 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F170AE7D1C589B940093EC23 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F170AE7F1C589B9B0093EC23 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		F170AE811C589BA60093EC23 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +85,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F170AE821C589BA60093EC23 /* libsqlite3.tbd in Frameworks */,
+				F170AE801C589B9B0093EC23 /* libz.tbd in Frameworks */,
+				F170AE7E1C589B940093EC23 /* SystemConfiguration.framework in Frameworks */,
+				F170AE7C1C589B8C0093EC23 /* StoreKit.framework in Frameworks */,
+				F170AE7A1C589B860093EC23 /* Security.framework in Frameworks */,
+				F170AE781C589B820093EC23 /* QuartzCore.framework in Frameworks */,
+				F170AE761C589B7B0093EC23 /* CoreLocation.framework in Frameworks */,
+				F170AE721C589B650093EC23 /* CoreGraphics.framework in Frameworks */,
+				F170AE701C589B5E0093EC23 /* CFNetwork.framework in Frameworks */,
+				F170AE6E1C589B570093EC23 /* AudioToolbox.framework in Frameworks */,
+				F170AE6C1C589B390093EC23 /* ParseUI.framework in Frameworks */,
+				F170AE681C589B390093EC23 /* Parse.framework in Frameworks */,
+				F170AE671C589B390093EC23 /* Bolts.framework in Frameworks */,
+				F170AE6A1C589B390093EC23 /* ParseFacebookUtilsV4.framework in Frameworks */,
+				F170AE6B1C589B390093EC23 /* ParseTwitterUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +123,22 @@
 		F170AE211C5887D00093EC23 = {
 			isa = PBXGroup;
 			children = (
+				F170AE811C589BA60093EC23 /* libsqlite3.tbd */,
+				F170AE7F1C589B9B0093EC23 /* libz.tbd */,
+				F170AE7D1C589B940093EC23 /* SystemConfiguration.framework */,
+				F170AE7B1C589B8C0093EC23 /* StoreKit.framework */,
+				F170AE791C589B860093EC23 /* Security.framework */,
+				F170AE771C589B820093EC23 /* QuartzCore.framework */,
+				F170AE751C589B7B0093EC23 /* CoreLocation.framework */,
+				F170AE731C589B6A0093EC23 /* CoreAudio.framework */,
+				F170AE711C589B650093EC23 /* CoreGraphics.framework */,
+				F170AE6F1C589B5E0093EC23 /* CFNetwork.framework */,
+				F170AE6D1C589B570093EC23 /* AudioToolbox.framework */,
+				F170AE611C589B390093EC23 /* Bolts.framework */,
+				F170AE621C589B390093EC23 /* Parse.framework */,
+				F170AE641C589B390093EC23 /* ParseFacebookUtilsV4.framework */,
+				F170AE651C589B390093EC23 /* ParseTwitterUtils.framework */,
+				F170AE661C589B390093EC23 /* ParseUI.framework */,
 				F170AE2C1C5887D00093EC23 /* GridLock */,
 				F170AE411C5887D00093EC23 /* GridLockTests */,
 				F170AE4C1C5887D00093EC23 /* GridLockUITests */,
@@ -100,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				F170AE2D1C5887D00093EC23 /* AppDelegate.swift */,
-				F170AE2F1C5887D00093EC23 /* ViewController.swift */,
 				F170AE311C5887D00093EC23 /* Main.storyboard */,
 				F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */,
 				F170AE341C5887D00093EC23 /* Assets.xcassets */,
@@ -259,7 +318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F170AE301C5887D00093EC23 /* ViewController.swift in Sources */,
 				F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */,
 				F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */,
 			);
@@ -401,6 +459,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = GridLock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.David-mattia.GridLock";
@@ -412,6 +474,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = GridLock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.David-mattia.GridLock";
