@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE2D1C5887D00093EC23 /* AppDelegate.swift */; };
+		F170AE301C5887D00093EC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE2F1C5887D00093EC23 /* ViewController.swift */; };
+		F170AE331C5887D00093EC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F170AE311C5887D00093EC23 /* Main.storyboard */; };
+		F170AE351C5887D00093EC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F170AE341C5887D00093EC23 /* Assets.xcassets */; };
+		F170AE381C5887D00093EC23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F170AE361C5887D00093EC23 /* LaunchScreen.storyboard */; };
+		F170AE431C5887D00093EC23 /* GridLockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE421C5887D00093EC23 /* GridLockTests.swift */; };
+		F170AE4E1C5887D00093EC23 /* GridLockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE4D1C5887D00093EC23 /* GridLockUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F170AE3F1C5887D00093EC23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F170AE221C5887D00093EC23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F170AE291C5887D00093EC23;
+			remoteInfo = GridLock;
+		};
+		F170AE4A1C5887D00093EC23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F170AE221C5887D00093EC23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F170AE291C5887D00093EC23;
+			remoteInfo = GridLock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F170AE2A1C5887D00093EC23 /* GridLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F170AE2D1C5887D00093EC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F170AE2F1C5887D00093EC23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F170AE321C5887D00093EC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F170AE341C5887D00093EC23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F170AE371C5887D00093EC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F170AE391C5887D00093EC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F170AE3E1C5887D00093EC23 /* GridLockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridLockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F170AE421C5887D00093EC23 /* GridLockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLockTests.swift; sourceTree = "<group>"; };
+		F170AE441C5887D00093EC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F170AE491C5887D00093EC23 /* GridLockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GridLockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F170AE4D1C5887D00093EC23 /* GridLockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLockUITests.swift; sourceTree = "<group>"; };
+		F170AE4F1C5887D00093EC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F170AE271C5887D00093EC23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F170AE3B1C5887D00093EC23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F170AE461C5887D00093EC23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F170AE211C5887D00093EC23 = {
+			isa = PBXGroup;
+			children = (
+				F170AE2C1C5887D00093EC23 /* GridLock */,
+				F170AE411C5887D00093EC23 /* GridLockTests */,
+				F170AE4C1C5887D00093EC23 /* GridLockUITests */,
+				F170AE2B1C5887D00093EC23 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F170AE2B1C5887D00093EC23 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F170AE2A1C5887D00093EC23 /* GridLock.app */,
+				F170AE3E1C5887D00093EC23 /* GridLockTests.xctest */,
+				F170AE491C5887D00093EC23 /* GridLockUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F170AE2C1C5887D00093EC23 /* GridLock */ = {
+			isa = PBXGroup;
+			children = (
+				F170AE2D1C5887D00093EC23 /* AppDelegate.swift */,
+				F170AE2F1C5887D00093EC23 /* ViewController.swift */,
+				F170AE311C5887D00093EC23 /* Main.storyboard */,
+				F170AE341C5887D00093EC23 /* Assets.xcassets */,
+				F170AE361C5887D00093EC23 /* LaunchScreen.storyboard */,
+				F170AE391C5887D00093EC23 /* Info.plist */,
+			);
+			path = GridLock;
+			sourceTree = "<group>";
+		};
+		F170AE411C5887D00093EC23 /* GridLockTests */ = {
+			isa = PBXGroup;
+			children = (
+				F170AE421C5887D00093EC23 /* GridLockTests.swift */,
+				F170AE441C5887D00093EC23 /* Info.plist */,
+			);
+			path = GridLockTests;
+			sourceTree = "<group>";
+		};
+		F170AE4C1C5887D00093EC23 /* GridLockUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F170AE4D1C5887D00093EC23 /* GridLockUITests.swift */,
+				F170AE4F1C5887D00093EC23 /* Info.plist */,
+			);
+			path = GridLockUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F170AE291C5887D00093EC23 /* GridLock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F170AE521C5887D00093EC23 /* Build configuration list for PBXNativeTarget "GridLock" */;
+			buildPhases = (
+				F170AE261C5887D00093EC23 /* Sources */,
+				F170AE271C5887D00093EC23 /* Frameworks */,
+				F170AE281C5887D00093EC23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GridLock;
+			productName = GridLock;
+			productReference = F170AE2A1C5887D00093EC23 /* GridLock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F170AE3D1C5887D00093EC23 /* GridLockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F170AE551C5887D00093EC23 /* Build configuration list for PBXNativeTarget "GridLockTests" */;
+			buildPhases = (
+				F170AE3A1C5887D00093EC23 /* Sources */,
+				F170AE3B1C5887D00093EC23 /* Frameworks */,
+				F170AE3C1C5887D00093EC23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F170AE401C5887D00093EC23 /* PBXTargetDependency */,
+			);
+			name = GridLockTests;
+			productName = GridLockTests;
+			productReference = F170AE3E1C5887D00093EC23 /* GridLockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F170AE481C5887D00093EC23 /* GridLockUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F170AE581C5887D00093EC23 /* Build configuration list for PBXNativeTarget "GridLockUITests" */;
+			buildPhases = (
+				F170AE451C5887D00093EC23 /* Sources */,
+				F170AE461C5887D00093EC23 /* Frameworks */,
+				F170AE471C5887D00093EC23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F170AE4B1C5887D00093EC23 /* PBXTargetDependency */,
+			);
+			name = GridLockUITests;
+			productName = GridLockUITests;
+			productReference = F170AE491C5887D00093EC23 /* GridLockUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F170AE221C5887D00093EC23 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "David Mattia";
+				TargetAttributes = {
+					F170AE291C5887D00093EC23 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					F170AE3D1C5887D00093EC23 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = F170AE291C5887D00093EC23;
+					};
+					F170AE481C5887D00093EC23 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = F170AE291C5887D00093EC23;
+					};
+				};
+			};
+			buildConfigurationList = F170AE251C5887D00093EC23 /* Build configuration list for PBXProject "GridLock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F170AE211C5887D00093EC23;
+			productRefGroup = F170AE2B1C5887D00093EC23 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F170AE291C5887D00093EC23 /* GridLock */,
+				F170AE3D1C5887D00093EC23 /* GridLockTests */,
+				F170AE481C5887D00093EC23 /* GridLockUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F170AE281C5887D00093EC23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F170AE381C5887D00093EC23 /* LaunchScreen.storyboard in Resources */,
+				F170AE351C5887D00093EC23 /* Assets.xcassets in Resources */,
+				F170AE331C5887D00093EC23 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F170AE3C1C5887D00093EC23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F170AE471C5887D00093EC23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F170AE261C5887D00093EC23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F170AE301C5887D00093EC23 /* ViewController.swift in Sources */,
+				F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F170AE3A1C5887D00093EC23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F170AE431C5887D00093EC23 /* GridLockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F170AE451C5887D00093EC23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F170AE4E1C5887D00093EC23 /* GridLockUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F170AE401C5887D00093EC23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F170AE291C5887D00093EC23 /* GridLock */;
+			targetProxy = F170AE3F1C5887D00093EC23 /* PBXContainerItemProxy */;
+		};
+		F170AE4B1C5887D00093EC23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F170AE291C5887D00093EC23 /* GridLock */;
+			targetProxy = F170AE4A1C5887D00093EC23 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F170AE311C5887D00093EC23 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F170AE321C5887D00093EC23 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F170AE361C5887D00093EC23 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F170AE371C5887D00093EC23 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F170AE501C5887D00093EC23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F170AE511C5887D00093EC23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F170AE531C5887D00093EC23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GridLock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.David-mattia.GridLock";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F170AE541C5887D00093EC23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GridLock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.David-mattia.GridLock";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F170AE561C5887D00093EC23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GridLockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.David-mattia.GridLockTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GridLock.app/GridLock";
+			};
+			name = Debug;
+		};
+		F170AE571C5887D00093EC23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GridLockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.David-mattia.GridLockTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GridLock.app/GridLock";
+			};
+			name = Release;
+		};
+		F170AE591C5887D00093EC23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GridLockUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.David-mattia.GridLockUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GridLock;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		F170AE5A1C5887D00093EC23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GridLockUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.David-mattia.GridLockUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GridLock;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F170AE251C5887D00093EC23 /* Build configuration list for PBXProject "GridLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F170AE501C5887D00093EC23 /* Debug */,
+				F170AE511C5887D00093EC23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F170AE521C5887D00093EC23 /* Build configuration list for PBXNativeTarget "GridLock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F170AE531C5887D00093EC23 /* Debug */,
+				F170AE541C5887D00093EC23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F170AE551C5887D00093EC23 /* Build configuration list for PBXNativeTarget "GridLockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F170AE561C5887D00093EC23 /* Debug */,
+				F170AE571C5887D00093EC23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F170AE581C5887D00093EC23 /* Build configuration list for PBXNativeTarget "GridLockUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F170AE591C5887D00093EC23 /* Debug */,
+				F170AE5A1C5887D00093EC23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F170AE221C5887D00093EC23 /* Project object */;
+}
