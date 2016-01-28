@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F11B6EE31C59DBE600872347 /* NotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */; };
+		F142A90B1C5A66B800CAEE0C /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142A90A1C5A66B800CAEE0C /* FriendsViewController.swift */; };
+		F142A90D1C5A670B00CAEE0C /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142A90C1C5A670B00CAEE0C /* FriendTableViewCell.swift */; };
 		F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE2D1C5887D00093EC23 /* AppDelegate.swift */; };
 		F170AE331C5887D00093EC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F170AE311C5887D00093EC23 /* Main.storyboard */; };
 		F170AE351C5887D00093EC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F170AE341C5887D00093EC23 /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterKeys.swift; sourceTree = "<group>"; };
+		F142A90A1C5A66B800CAEE0C /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		F142A90C1C5A670B00CAEE0C /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		F170AE2A1C5887D00093EC23 /* GridLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F170AE2D1C5887D00093EC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F170AE321C5887D00093EC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */,
 				F170AE2D1C5887D00093EC23 /* AppDelegate.swift */,
 				F170AE311C5887D00093EC23 /* Main.storyboard */,
+				F142A90C1C5A670B00CAEE0C /* FriendTableViewCell.swift */,
+				F142A90A1C5A66B800CAEE0C /* FriendsViewController.swift */,
 				F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */,
 				F170AE831C589C670093EC23 /* ParseLogInViewController.swift */,
 				F170AE871C589F6B0093EC23 /* ParseSignUpViewController.swift */,
@@ -335,7 +341,9 @@
 				F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */,
 				F11B6EE31C59DBE600872347 /* NotificationCenterKeys.swift in Sources */,
 				F170AE881C589F6B0093EC23 /* ParseSignUpViewController.swift in Sources */,
+				F142A90B1C5A66B800CAEE0C /* FriendsViewController.swift in Sources */,
 				F170AE841C589C670093EC23 /* ParseLogInViewController.swift in Sources */,
+				F142A90D1C5A670B00CAEE0C /* FriendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
