@@ -24,9 +24,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         query?.findObjectsInBackgroundWithBlock({ (users: [PFObject]?, error: NSError?) -> Void in
             self.users = users
             self.FriendsTableView.reloadData()
-            print(self.users)
         })
-        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -41,7 +39,6 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "friendCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! FriendTableViewCell
@@ -53,6 +50,37 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.scoreLabel.text = "\(points)"
         }
         
+        cell.challengeButton.tag = indexPath.row
+        cell.challengeButton.addTarget(self, action: "challengeClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
         return cell
+    }
+    
+    func challengeClicked(sender: UIButton!) {
+        let challengee = (self.users![sender.tag] as! PFUser).username
+        
+        // Create an alertview to gather the information for a challenge
+        var wagerTextField: UITextField?
+        var messageTextField: UITextField?
+        let alert = UIAlertController(title: "Challenge \(challengee!)!",
+            message: "",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Send Challenge", style: UIAlertActionStyle.Default, handler: {
+            (action) -> Void in
+            print(wagerTextField?.text)
+            print(messageTextField?.text)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Points to Challenge"
+            textField.keyboardType = UIKeyboardType.PhonePad
+            wagerTextField = textField
+        })
+        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
+            textField.placeholder = "Message to \(challengee!)"
+            messageTextField = textField
+        })
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
