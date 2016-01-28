@@ -13,6 +13,7 @@ import ParseUI
 class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     var startTime: NSDate?
     var endTime: NSDate?
+    var elapsedTimeBeforeLeavingApp: NSTimeInterval?
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var pointValue: UIBarButtonItem!
@@ -59,6 +60,35 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.endButton.enabled = false
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "appResigned",
+            name: kApplicationWillResignActiveNotification,
+            object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "appReopened",
+            name: kApplicationWillReOpenActiveNotification,
+            object: nil)
+    }
+    
+    func appResigned() {
+        // Get the current time elapsed from @startTime.
+        // This value will be set to @startTime on app resume.
+        if(endButton.enabled) {
+            self.elapsedTimeBeforeLeavingApp = NSDate().timeIntervalSinceDate(startTime!)
+        }
+    }
+    
+    func appReopened() {
+        if(endButton.enabled) {
+            self.startTime = NSDate().dateByAddingTimeInterval(-self.elapsedTimeBeforeLeavingApp!)
+            
+            let alert = UIAlertController(title: "Please stay in the App!",
+                message: String(format: "We have subtracted %.1f seconds from your current session due to you exiting the app", elapsedTimeBeforeLeavingApp!),
+                preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func startButtonPressed(sender: AnyObject) {

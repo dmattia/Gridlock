@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11B6EE31C59DBE600872347 /* NotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */; };
 		F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE2D1C5887D00093EC23 /* AppDelegate.swift */; };
 		F170AE331C5887D00093EC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F170AE311C5887D00093EC23 /* Main.storyboard */; };
 		F170AE351C5887D00093EC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F170AE341C5887D00093EC23 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterKeys.swift; sourceTree = "<group>"; };
 		F170AE2A1C5887D00093EC23 /* GridLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F170AE2D1C5887D00093EC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F170AE321C5887D00093EC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				F170AE851C589D0E0093EC23 /* Pacifico.ttf */,
+				F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */,
 				F170AE2D1C5887D00093EC23 /* AppDelegate.swift */,
 				F170AE311C5887D00093EC23 /* Main.storyboard */,
 				F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */,
@@ -330,6 +333,7 @@
 			files = (
 				F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */,
 				F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */,
+				F11B6EE31C59DBE600872347 /* NotificationCenterKeys.swift in Sources */,
 				F170AE881C589F6B0093EC23 /* ParseSignUpViewController.swift in Sources */,
 				F170AE841C589C670093EC23 /* ParseLogInViewController.swift in Sources */,
 			);
@@ -564,6 +568,7 @@
 				F170AE541C5887D00093EC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F170AE551C5887D00093EC23 /* Build configuration list for PBXNativeTarget "GridLockTests" */ = {
 			isa = XCConfigurationList;
@@ -572,6 +577,7 @@
 				F170AE571C5887D00093EC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F170AE581C5887D00093EC23 /* Build configuration list for PBXNativeTarget "GridLockUITests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +586,7 @@
 				F170AE5A1C5887D00093EC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
