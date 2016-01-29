@@ -13,14 +13,18 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var FriendsTableView: UITableView!
     var users: [PFObject]?
+    var chalengee: PFUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.FriendsTableView.delegate = self
         self.FriendsTableView.dataSource = self
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         let query = PFUser.query()
+        query?.whereKey("objectId", notEqualTo: PFUser.currentUser()!.objectId!)
         query?.findObjectsInBackgroundWithBlock({ (users: [PFObject]?, error: NSError?) -> Void in
             self.users = users
             self.FriendsTableView.reloadData()
@@ -58,29 +62,14 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func challengeClicked(sender: UIButton!) {
-        let challengee = (self.users![sender.tag] as! PFUser).username
-        
-        // Create an alertview to gather the information for a challenge
-        var wagerTextField: UITextField?
-        var messageTextField: UITextField?
-        let alert = UIAlertController(title: "Challenge \(challengee!)!",
-            message: "",
-            preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Send Challenge", style: UIAlertActionStyle.Default, handler: {
-            (action) -> Void in
-            print(wagerTextField?.text)
-            print(messageTextField?.text)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
-            textField.placeholder = "Points to Challenge"
-            textField.keyboardType = UIKeyboardType.PhonePad
-            wagerTextField = textField
-        })
-        alert.addTextFieldWithConfigurationHandler({(textField: UITextField!) in
-            textField.placeholder = "Message to \(challengee!)"
-            messageTextField = textField
-        })
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.chalengee = self.users![sender.tag] as? PFUser
+        self.performSegueWithIdentifier("sendChallenge", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "sendChallenge") {
+            let destination = segue.destinationViewController as! ChallengeViewController
+            destination.chalengee = self.chalengee
+        }
     }
 }

@@ -35,6 +35,7 @@
 		F170AE841C589C670093EC23 /* ParseLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE831C589C670093EC23 /* ParseLogInViewController.swift */; };
 		F170AE861C589D0E0093EC23 /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F170AE851C589D0E0093EC23 /* Pacifico.ttf */; };
 		F170AE881C589F6B0093EC23 /* ParseSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE871C589F6B0093EC23 /* ParseSignUpViewController.swift */; };
+		F18499AB1C5A917D00E82F61 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18499AA1C5A917D00E82F61 /* ChallengeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		F170AE831C589C670093EC23 /* ParseLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLogInViewController.swift; sourceTree = "<group>"; };
 		F170AE851C589D0E0093EC23 /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
 		F170AE871C589F6B0093EC23 /* ParseSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseSignUpViewController.swift; sourceTree = "<group>"; };
+		F18499AA1C5A917D00E82F61 /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,8 +177,9 @@
 				F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */,
 				F170AE2D1C5887D00093EC23 /* AppDelegate.swift */,
 				F170AE311C5887D00093EC23 /* Main.storyboard */,
-				F142A90C1C5A670B00CAEE0C /* FriendTableViewCell.swift */,
+				F18499AA1C5A917D00E82F61 /* ChallengeViewController.swift */,
 				F142A90A1C5A66B800CAEE0C /* FriendsViewController.swift */,
+				F142A90C1C5A670B00CAEE0C /* FriendTableViewCell.swift */,
 				F170AE5B1C58887B0093EC23 /* GridlockViewController.swift */,
 				F170AE831C589C670093EC23 /* ParseLogInViewController.swift */,
 				F170AE871C589F6B0093EC23 /* ParseSignUpViewController.swift */,
@@ -339,6 +342,7 @@
 			files = (
 				F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */,
 				F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */,
+				F18499AB1C5A917D00E82F61 /* ChallengeViewController.swift in Sources */,
 				F11B6EE31C59DBE600872347 /* NotificationCenterKeys.swift in Sources */,
 				F170AE881C589F6B0093EC23 /* ParseSignUpViewController.swift in Sources */,
 				F142A90B1C5A66B800CAEE0C /* FriendsViewController.swift in Sources */,
