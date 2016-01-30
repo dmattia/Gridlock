@@ -23,6 +23,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidAppear(animated: Bool) {
         let query = PFQuery(className: "Challenge")
+        query.orderByDescending("updatedAt")
         query.findObjectsInBackgroundWithBlock { (challenges: [PFObject]?, error: NSError?) -> Void in
             self.challenges = challenges
             self.feedTableView.reloadData()
@@ -56,7 +57,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let challenger = try PFQuery.getUserObjectWithId(challengerId!)
             let challengee = try PFQuery.getUserObjectWithId(challengeeId!)
             
-            cell.textLabel!.text = "\(challenger.username!) has \(status!.lowercaseString) a challenge against \(challengee.username!)"
+            cell.textLabel!.text = "\(challenger.username!) \(status!.lowercaseString) a challenge against \(challengee.username!)"
         } catch {
             cell.textLabel!.text = "Could not fetch challenge information"
         }

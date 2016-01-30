@@ -13,6 +13,7 @@ class ChallengeViewController: UIViewController {
     var startTime: NSDate?
     var endTime: NSDate?
     @IBOutlet weak var startTimeTextField: UITextField!
+    @IBOutlet weak var endTimeTextField: UITextField!
     @IBOutlet weak var wagerTextField: UITextField!
     @IBOutlet weak var messageTextField: UITextField!
     var chalengee : PFUser?
@@ -51,17 +52,30 @@ class ChallengeViewController: UIViewController {
         datePickerView.minuteInterval = 5
         datePickerView.minimumDate = NSDate()
         sender.inputView = datePickerView
-        datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        if(sender == self.startTimeTextField) {
+            datePickerView.addTarget(self, action: Selector("startTimeValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        } else if (sender == self.endTimeTextField) {
+            datePickerView.minimumDate = self.startTime
+            datePickerView.addTarget(self, action: Selector("endTimeValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        }
     }
     
-    func datePickerValueChanged(sender:UIDatePicker) {
+    func startTimeValueChanged(sender:UIDatePicker) {
         self.startTime = sender.date
-        self.endTime = sender.date.dateByAddingTimeInterval(NSTimeInterval(60*60))
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         self.startTimeTextField.text = dateFormatter.stringFromDate(sender.date)
+    }
+    
+    func endTimeValueChanged(sender:UIDatePicker) {
+        self.endTime = sender.date
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        self.endTimeTextField.text = dateFormatter.stringFromDate(sender.date)
     }
 }
 
