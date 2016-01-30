@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F11B6EE31C59DBE600872347 /* NotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */; };
+		F12CBFF31C5C370100607D5E /* Share-TechMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F12CBFF21C5C370100607D5E /* Share-TechMono.ttf */; };
 		F142A90B1C5A66B800CAEE0C /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142A90A1C5A66B800CAEE0C /* FriendsViewController.swift */; };
 		F142A90D1C5A670B00CAEE0C /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142A90C1C5A670B00CAEE0C /* FriendTableViewCell.swift */; };
+		F148B35C1C5D3D68005E45D6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148B35B1C5D3D68005E45D6 /* FeedViewController.swift */; };
 		F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F170AE2D1C5887D00093EC23 /* AppDelegate.swift */; };
 		F170AE331C5887D00093EC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F170AE311C5887D00093EC23 /* Main.storyboard */; };
 		F170AE351C5887D00093EC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F170AE341C5887D00093EC23 /* Assets.xcassets */; };
@@ -57,8 +59,10 @@
 
 /* Begin PBXFileReference section */
 		F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterKeys.swift; sourceTree = "<group>"; };
+		F12CBFF21C5C370100607D5E /* Share-TechMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Share-TechMono.ttf"; sourceTree = "<group>"; };
 		F142A90A1C5A66B800CAEE0C /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		F142A90C1C5A670B00CAEE0C /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		F148B35B1C5D3D68005E45D6 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F170AE2A1C5887D00093EC23 /* GridLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F170AE2D1C5887D00093EC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F170AE321C5887D00093EC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,10 +177,12 @@
 		F170AE2C1C5887D00093EC23 /* GridLock */ = {
 			isa = PBXGroup;
 			children = (
+				F12CBFF21C5C370100607D5E /* Share-TechMono.ttf */,
 				F170AE851C589D0E0093EC23 /* Pacifico.ttf */,
 				F11B6EE21C59DBE600872347 /* NotificationCenterKeys.swift */,
 				F170AE2D1C5887D00093EC23 /* AppDelegate.swift */,
 				F170AE311C5887D00093EC23 /* Main.storyboard */,
+				F148B35B1C5D3D68005E45D6 /* FeedViewController.swift */,
 				F18499AA1C5A917D00E82F61 /* ChallengeViewController.swift */,
 				F142A90A1C5A66B800CAEE0C /* FriendsViewController.swift */,
 				F142A90C1C5A670B00CAEE0C /* FriendTableViewCell.swift */,
@@ -312,6 +318,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12CBFF31C5C370100607D5E /* Share-TechMono.ttf in Resources */,
 				F170AE381C5887D00093EC23 /* LaunchScreen.storyboard in Resources */,
 				F170AE351C5887D00093EC23 /* Assets.xcassets in Resources */,
 				F170AE861C589D0E0093EC23 /* Pacifico.ttf in Resources */,
@@ -341,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F170AE2E1C5887D00093EC23 /* AppDelegate.swift in Sources */,
+				F148B35C1C5D3D68005E45D6 /* FeedViewController.swift in Sources */,
 				F170AE5C1C58887B0093EC23 /* GridlockViewController.swift in Sources */,
 				F18499AB1C5A917D00E82F61 /* ChallengeViewController.swift in Sources */,
 				F11B6EE31C59DBE600872347 /* NotificationCenterKeys.swift in Sources */,

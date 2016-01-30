@@ -12,9 +12,11 @@ import ParseUI
 
 class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     var startTime: NSDate?
-    var endTime: NSDate?
+    var elapsedTime: NSTimeInterval?
     var elapsedTimeBeforeLeavingApp: NSTimeInterval?
+    var timer: NSTimer?
     @IBOutlet weak var endButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var pointValue: UIBarButtonItem!
     
@@ -69,6 +71,8 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
             selector: "appReopened",
             name: kApplicationWillReOpenActiveNotification,
             object: nil)
+        
+        self.timeLabel.font = UIFont(name: "Share-TechMono", size: 60)
     }
     
     func appResigned() {
@@ -94,24 +98,29 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     @IBAction func startButtonPressed(sender: AnyObject) {
         startTime = NSDate()
         swapButtonEnabled(nil)
+        self.timer = NSTimer(timeInterval: 0.1, target: self, selector: "countUp", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSRunLoopCommonModes)
+    }
+    
+    func countUp() {
+        self.elapsedTime = self.timer!.fireDate.timeIntervalSinceDate(self.startTime!)
+        self.timeLabel.text = String(format: "%.1f", self.elapsedTime!)
     }
     
     @IBAction func endButtonPressed(sender: AnyObject) {
-        endTime = NSDate()
+        self.timer?.invalidate()
         swapButtonEnabled(nil)
-        if let timeElapsed = endTime?.timeIntervalSinceDate(startTime!) {
-            // Add floor of timeElapsed to Score
-            if let currentUser = PFUser.currentUser() {
-                currentUser["points"] = (currentUser["points"] as! Double) + floor(timeElapsed)
-                currentUser.saveInBackgroundWithBlock({ (completed: Bool, error: NSError?) -> Void in
-                    self.updatePoints()
-                })
-            }
-            
-            let alert = UIAlertController(title: "Session Ended", message: String(format: "You made it %.1f seconds", timeElapsed), preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+        // Add floor of timeElapsed to Score
+        if let currentUser = PFUser.currentUser() {
+            currentUser["points"] = (currentUser["points"] as! Double) + floor(self.elapsedTime!)
+            currentUser.saveInBackgroundWithBlock({ (completed: Bool, error: NSError?) -> Void in
+                self.updatePoints()
+            })
         }
+        
+        let alert = UIAlertController(title: "Session Ended", message: String(format: "You made it %.1f seconds", self.elapsedTime!), preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func swapButtonEnabled(alert: UIAlertAction!) {
