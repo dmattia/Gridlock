@@ -15,6 +15,8 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     var elapsedTime: NSTimeInterval?
     var elapsedTimeBeforeLeavingApp: NSTimeInterval?
     var timer: NSTimer?
+    var countUpTimer: NSTimer? // Used to add one point every second @timer runs
+    var isInApp: Bool = true
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -22,9 +24,10 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     
     func updatePoints() {
         let currentUser = PFUser.currentUser()
-        if let userPoints = currentUser?.objectForKey("points") as? NSNumber {
-            self.pointValue.title = "\(userPoints)"
-        }
+        let userPoints = currentUser?.objectForKey("points") as? NSNumber
+        let userChallengePoints = currentUser?.objectForKey("challengePoints") as? NSNumber
+        let sum = (userPoints?.integerValue)! + (userChallengePoints?.integerValue)!
+        self.pointValue.title = ("\(sum)")
     }
     
     func displayLogIn() {
@@ -81,9 +84,11 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
         if(endButton.enabled) {
             self.elapsedTimeBeforeLeavingApp = NSDate().timeIntervalSinceDate(startTime!)
         }
+        self.isInApp = false
     }
     
     func appReopened() {
+        self.isInApp = true
         if(endButton.enabled) {
             self.startTime = NSDate().dateByAddingTimeInterval(-self.elapsedTimeBeforeLeavingApp!)
             
@@ -100,6 +105,9 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
         swapButtonEnabled(nil)
         self.timer = NSTimer(timeInterval: 0.1, target: self, selector: "countUp", userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(self.timer!, forMode: NSRunLoopCommonModes)
+        
+        self.countUpTimer = NSTimer(timeInterval: 1.0, target: self, selector: "addPoint", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(self.countUpTimer!, forMode: NSRunLoopCommonModes)
     }
     
     func countUp() {
@@ -107,8 +115,17 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
         self.timeLabel.text = String(format: "%.1f", self.elapsedTime!)
     }
     
+    func addPoint() {
+        if(self.isInApp) {
+            let newSum = (self.pointValue.title! as NSString).integerValue + 1
+            self.pointValue.title = "\(newSum)"
+        }
+    }
+    
     @IBAction func endButtonPressed(sender: AnyObject) {
         self.timer?.invalidate()
+        self.countUpTimer?.invalidate()
+        
         swapButtonEnabled(nil)
         // Add floor of timeElapsed to Score
         if let currentUser = PFUser.currentUser() {
