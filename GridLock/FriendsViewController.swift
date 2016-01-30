@@ -25,6 +25,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidAppear(animated: Bool) {
         let query = PFUser.query()
         query?.whereKey("objectId", notEqualTo: PFUser.currentUser()!.objectId!)
+        query?.orderByDescending("points")
         query?.findObjectsInBackgroundWithBlock({ (users: [PFObject]?, error: NSError?) -> Void in
             self.users = users
             self.FriendsTableView.reloadData()

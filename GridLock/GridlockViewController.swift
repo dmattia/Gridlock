@@ -24,10 +24,11 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     
     func updatePoints() {
         let currentUser = PFUser.currentUser()
-        let userPoints = currentUser?.objectForKey("points") as? NSNumber
-        let userChallengePoints = currentUser?.objectForKey("challengePoints") as? NSNumber
-        let sum = (userPoints?.integerValue)! + (userChallengePoints?.integerValue)!
-        self.pointValue.title = ("\(sum)")
+        if let userPoints = currentUser?.objectForKey("points") as? NSNumber {
+            let userChallengePoints = currentUser?.objectForKey("challengePoints") as? NSNumber
+            let sum = userPoints.integerValue + (userChallengePoints?.integerValue)!
+            self.pointValue.title = ("\(sum)")
+        }
     }
     
     func displayLogIn() {
@@ -55,6 +56,17 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
             }
         })
         self.updatePoints()
+        
+        // Start any challenge where the start time has recently passed
+        let declaredQuery = PFQuery(className: "Challenge")
+        declaredQuery.whereKey("status", equalTo: "Declared")
+        declaredQuery.whereKey("startTime", lessThan: NSDate())
+        declaredQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            for object in objects! {
+                object.setObject("Started", forKey: "status")
+                object.saveInBackground()
+            }
+        }
     }
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
