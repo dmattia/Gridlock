@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var feedTableView: UITableView!
+    var challenges : [PFObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +21,20 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.feedTableView.dataSource = self
     }
     
+    override func viewDidAppear(animated: Bool) {
+        let query = PFQuery(className: "Challenge")
+        query.findObjectsInBackgroundWithBlock { (challenges: [PFObject]?, error: NSError?) -> Void in
+            self.challenges = challenges
+            self.feedTableView.reloadData()
+        }
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if let items = challenges {
+            return items.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -31,8 +45,20 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cellID = "feedCell"
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
         
-        if let textLabel = cell.textLabel {
-            textLabel.text = "Hello"
+        cell.textLabel?.font = UIFont(name: "Times", size: 18)
+        
+        // Find the username of the challenger
+        let challenge = self.challenges![indexPath.row]
+        let challengerId = challenge["challengerId"] as? String
+        let challengeeId = challenge["challengeeId"] as? String
+        let status = challenge["status"] as? String
+        do {
+            let challenger = try PFQuery.getUserObjectWithId(challengerId!)
+            let challengee = try PFQuery.getUserObjectWithId(challengeeId!)
+            
+            cell.textLabel!.text = "\(challenger.username!) has \(status!.lowercaseString) a challenge against \(challengee.username!)"
+        } catch {
+            cell.textLabel!.text = "Could not fetch challenge information"
         }
         
         return cell
