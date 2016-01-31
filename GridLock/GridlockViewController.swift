@@ -53,20 +53,87 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
         dispatch_async(dispatch_get_main_queue(), {
             if(PFUser.currentUser() == nil) {
                 self.displayLogIn()
+            } else {
+                print("User is already logged in")
+                self.updatePoints()
+                
+                // Ask user to accept Challenges he hasn't accepted yet
+                let declaredQuery = PFQuery(className: "Challenge")
+                declaredQuery.whereKey("status", equalTo: "Declared")
+                declaredQuery.whereKey("challengeeId", equalTo: PFUser.currentUser()!.objectId!)
+                declaredQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+                    for challenge in objects! {
+                        
+                        let challengerId = challenge["challengerId"] as? String
+                        do {
+                            let challenger = try PFQuery.getUserObjectWithId(challengerId!)
+                            let challengerName = challenger.username
+                            
+                            let alert = UIAlertController(title: "Challenge From: \(challengerName!)",
+                                message: "Would you like to accept?",
+                                preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: nil))
+                            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: {
+                                challenge.setObject("Accepted", forKey: "status")
+                                challenge.saveInBackground()
+                            })
+                        } catch {
+                            print("Could not find user with objectid")
+                        }
+                        
+                        challenge.saveInBackground()
+                    }
+                }
+                
+                // Start any challenge where the start time has recently passed
+                let acceptedQuery = PFQuery(className: "Challenge")
+                acceptedQuery.whereKey("status", equalTo: "Accepted")
+                acceptedQuery.whereKey("startTime", lessThan: NSDate())
+                acceptedQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+                    for object in objects! {
+                        object.setObject("Started", forKey: "status")
+                        object.saveInBackground()
+                    }
+                }
+                
+                // Finish any challenge where the end time has passed
+                // TODO: Actually have this check who won
+                let startedQuery = PFQuery(className: "Challenge")
+                startedQuery.whereKey("status", equalTo: "Started")
+                startedQuery.whereKey("endTime", lessThan: NSDate())
+                startedQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+                    for object in objects! {
+                        // Update Points as this is a finished challenge
+                        let challenge = object
+                        let challengerId = challenge["challengerId"] as? String
+                        let wagerValue = challenge["wager"] as! NSNumber
+                        do {
+                            let challenger = try PFQuery.getUserObjectWithId(challengerId!)
+                            let challengerName = challenger.username
+                            
+                            let alert = UIAlertController(title: "You win!",
+                                message: "You won \(wagerValue) points for winning the challenge against \(challengerName!)!",
+                                preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: nil)
+                            
+                            // Add wager value to current user
+                            let currentPoints = PFUser.currentUser()!["challengePoints"] as! NSNumber
+                            PFUser.currentUser()!["challengePoints"] = currentPoints.integerValue + wagerValue.integerValue
+                            PFUser.currentUser()!.saveInBackgroundWithBlock({ (completed: Bool, error: NSError?) -> Void in
+                                self.updatePoints()
+                            })
+                        } catch {
+                            print("Could not find user with objectid")
+                        }
+                        
+                        object.setObject("Finished", forKey: "status")
+                        object.saveInBackground()
+                    }
+                }
             }
         })
-        self.updatePoints()
-        
-        // Start any challenge where the start time has recently passed
-        let declaredQuery = PFQuery(className: "Challenge")
-        declaredQuery.whereKey("status", equalTo: "Declared")
-        declaredQuery.whereKey("startTime", lessThan: NSDate())
-        declaredQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-            for object in objects! {
-                object.setObject("Started", forKey: "status")
-                object.saveInBackground()
-            }
-        }
     }
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
@@ -102,13 +169,29 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     func appReopened() {
         self.isInApp = true
         if(endButton.enabled) {
+            // check if app has been resigned for more than 20 seconds
+            let oldStartTime = self.startTime
             self.startTime = NSDate().dateByAddingTimeInterval(-self.elapsedTimeBeforeLeavingApp!)
-            
-            let alert = UIAlertController(title: "Please stay in the App!",
-                message: String(format: "We have subtracted %.1f seconds from your current session due to you exiting the app", elapsedTimeBeforeLeavingApp!),
-                preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let timeSpentResigned = self.startTime?.timeIntervalSinceDate(oldStartTime!)
+            if(timeSpentResigned > 10) {
+                let alert = UIAlertController(title: "Session Ended",
+                    message: String(format: "You left the app for %.1f seconds, so we have invalidated your session", timeSpentResigned!),
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+                self.timer?.invalidate()
+                self.countUpTimer?.invalidate()
+                updatePoints()
+                swapButtonEnabled(nil)
+                self.timeLabel.text = "0.0"
+            } else {
+                let alert = UIAlertController(title: "Please stay in the App!",
+                    message: String(format: "We have subtracted %.1f seconds from your current session due to you exiting the app", elapsedTimeBeforeLeavingApp!),
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
         }
     }
     

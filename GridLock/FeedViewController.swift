@@ -62,6 +62,13 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.textLabel!.text = "Could not fetch challenge information"
         }
         
+        // Set bold if user has not seen this notification yet
+        let userUpdated = PFUser.currentUser()?.updatedAt
+        let challengeUpdated = challenge.updatedAt
+        if(userUpdated!.compare(challengeUpdated!) == NSComparisonResult.OrderedAscending) {
+            cell.textLabel?.font = UIFont.boldSystemFontOfSize(18)
+        }
+        
         return cell
     }
     

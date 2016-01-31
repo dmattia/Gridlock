@@ -49,7 +49,7 @@ class ChallengeViewController: UIViewController {
     @IBAction func openedStartTime(sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
-        datePickerView.minuteInterval = 5
+        datePickerView.minuteInterval = 1
         datePickerView.minimumDate = NSDate()
         sender.inputView = datePickerView
         if(sender == self.startTimeTextField) {
