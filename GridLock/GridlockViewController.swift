@@ -71,7 +71,10 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
                 }
                 
                 object.setObject("Finished", forKey: "status")
-                object.saveInBackground()
+                object.saveInBackgroundWithBlock({ (completed: Bool, error: NSError?) -> Void in
+                    print("Object saved")
+                    self.endButtonPressed(0)
+                })
             }
         }
     }
