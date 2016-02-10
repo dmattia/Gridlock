@@ -36,6 +36,7 @@ class ParseLogInViewController: PFLogInViewController, PFSignUpViewControllerDel
     func signUpViewController(signUpController: PFSignUpViewController, didSignUpUser user: PFUser) {
         print("Signing up user")
         user["points"] = 150
+        user["challengePoints"] = 0
         user.saveInBackground()
         signUpController.dismissViewControllerAnimated(true, completion: nil)
     }

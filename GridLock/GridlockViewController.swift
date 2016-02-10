@@ -31,9 +31,55 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
         }
     }
     
+    func checkForWinners() {
+        // Finish any challenge where the end time has passed
+        // TODO: Actually have this check who won
+        let startedQuery = PFQuery(className: "Challenge")
+        
+        // hacky, should switch eventually
+        //startedQuery.whereKey("status", equalTo: "Started")
+        startedQuery.whereKey("status", notEqualTo: "Finished")
+        
+        startedQuery.whereKey("endTime", lessThan: NSDate())
+        startedQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            for object in objects! {
+                // Update Points as this is a finished challenge
+                let challenge = object
+                let challengerId = challenge["challengerId"] as? String
+                let wagerValue = challenge["wager"] as! NSNumber
+                do {
+                    let challenger = try PFQuery.getUserObjectWithId(challengerId!)
+                    let challengerName = challenger.username
+                    
+                    let alert = UIAlertController(title: "You win!",
+                        message: "You won \(wagerValue) points for winning the challenge against \(challengerName!)!",
+                        preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    // Add wager value to current user
+                    if let user = PFUser.currentUser() {
+                        if let currentPoints = user["challengePoints"] as? NSNumber {
+                            PFUser.currentUser()!["challengePoints"] = currentPoints.integerValue + wagerValue.integerValue
+                            PFUser.currentUser()!.saveInBackgroundWithBlock({ (completed: Bool, error: NSError?) -> Void in
+                                self.updatePoints()
+                            })
+                        }
+                    }
+                } catch {
+                    print("Could not find user with objectid")
+                }
+                
+                object.setObject("Finished", forKey: "status")
+                object.saveInBackground()
+            }
+        }
+    }
+    
     func displayLogIn() {
         let loginViewController = ParseLogInViewController()
         loginViewController.delegate = self
+        PFUser.logOut()
         
         loginViewController.fields = [
             PFLogInFields.UsernameAndPassword,
@@ -96,43 +142,8 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
                         object.saveInBackground()
                     }
                 }
-                
-                // Finish any challenge where the end time has passed
-                // TODO: Actually have this check who won
-                let startedQuery = PFQuery(className: "Challenge")
-                startedQuery.whereKey("status", equalTo: "Started")
-                startedQuery.whereKey("endTime", lessThan: NSDate())
-                startedQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-                    for object in objects! {
-                        // Update Points as this is a finished challenge
-                        let challenge = object
-                        let challengerId = challenge["challengerId"] as? String
-                        let wagerValue = challenge["wager"] as! NSNumber
-                        do {
-                            let challenger = try PFQuery.getUserObjectWithId(challengerId!)
-                            let challengerName = challenger.username
-                            
-                            let alert = UIAlertController(title: "You win!",
-                                message: "You won \(wagerValue) points for winning the challenge against \(challengerName!)!",
-                                preferredStyle: UIAlertControllerStyle.Alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                            self.presentViewController(alert, animated: true, completion: nil)
-                            
-                            // Add wager value to current user
-                            let currentPoints = PFUser.currentUser()!["challengePoints"] as! NSNumber
-                            PFUser.currentUser()!["challengePoints"] = currentPoints.integerValue + wagerValue.integerValue
-                            PFUser.currentUser()!.saveInBackgroundWithBlock({ (completed: Bool, error: NSError?) -> Void in
-                                self.updatePoints()
-                            })
-                        } catch {
-                            print("Could not find user with objectid")
-                        }
-                        
-                        object.setObject("Finished", forKey: "status")
-                        object.saveInBackground()
-                    }
-                }
             }
+            self.checkForWinners()
         })
     }
     
@@ -155,6 +166,8 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
             object: nil)
         
         self.timeLabel.font = UIFont(name: "Share-TechMono", size: 60)
+        
+        PFUser.logOut()
     }
     
     func appResigned() {
@@ -215,6 +228,7 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
             let newSum = (self.pointValue.title! as NSString).integerValue + 1
             self.pointValue.title = "\(newSum)"
         }
+        self.checkForWinners()
     }
     
     @IBAction func endButtonPressed(sender: AnyObject) {

@@ -46,7 +46,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cellID = "feedCell"
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellID)
         
-        cell.textLabel?.font = UIFont(name: "Times", size: 18)
+        cell.textLabel?.font = UIFont(name: "Times", size: 14)
         
         // Find the username of the challenger
         let challenge = self.challenges![indexPath.row]
@@ -66,7 +66,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let userUpdated = PFUser.currentUser()?.updatedAt
         let challengeUpdated = challenge.updatedAt
         if(userUpdated!.compare(challengeUpdated!) == NSComparisonResult.OrderedAscending) {
-            cell.textLabel?.font = UIFont.boldSystemFontOfSize(18)
+            cell.textLabel?.font = UIFont.boldSystemFontOfSize(14)
         }
         
         return cell
