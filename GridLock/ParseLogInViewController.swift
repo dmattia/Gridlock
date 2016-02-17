@@ -23,12 +23,11 @@ class ParseLogInViewController: PFLogInViewController, PFSignUpViewControllerDel
         logo.shadowOffset = CGSizeMake(2, 2)
         logInView?.logo = logo
         
-        self.logInView?.backgroundColor = UIColor.darkGrayColor()
+        self.logInView?.backgroundColor = UIColor(colorLiteralRed: 102/255, green: 217/255, blue: 239/255, alpha: 1)
         
         logInView?.logInButton?.setBackgroundImage(nil, forState: .Normal)
-        logInView?.logInButton?.backgroundColor = UIColor(red: 52/255, green: 125/255, blue: 255/255, alpha: 1)
         logInView?.passwordForgottenButton?.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-                
+                        
         self.signUpController = ParseSignUpViewController()
         self.signUpController?.delegate = self
     }

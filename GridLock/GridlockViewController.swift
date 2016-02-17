@@ -74,7 +74,7 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
                     
                     challenge.saveInBackground()
                 }
-        }
+            }
         }
     }
     
