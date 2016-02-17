@@ -47,6 +47,37 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
         */
     }
     
+    func checkForAccept() {
+        if let user = PFUser.currentUser() {
+            let declaredQuery = PFQuery(className: "Challenge")
+            declaredQuery.whereKey("status", equalTo: "Declared")
+            declaredQuery.whereKey("challengeeId", equalTo: user.objectId!)
+            declaredQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+                for challenge in objects! {
+                    let challengerId = challenge["challengerId"] as? String
+                    do {
+                        let challenger = try PFQuery.getUserObjectWithId(challengerId!)
+                        let challengerName = challenger.username
+                        
+                        let alert = UIAlertController(title: "Challenge From: \(challengerName!)",
+                            message: "Would you like to accept?",
+                            preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: nil))
+                        self.presentViewController(alert, animated: true, completion: {
+                            challenge.setObject("Accepted", forKey: "status")
+                            challenge.saveInBackground()
+                        })
+                    } catch {
+                        print("Could not find user with objectid")
+                    }
+                    
+                    challenge.saveInBackground()
+                }
+        }
+        }
+    }
+    
     func checkForWinners() {
         // Finish any challenge where the end time has passed
         // TODO: Actually have this check who won
@@ -121,38 +152,8 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
             } else {
                 print("User is already logged in")
                 self.updatePoints()
-                
-                // Ask user to accept Challenges he hasn't accepted yet
-                let declaredQuery = PFQuery(className: "Challenge")
-                declaredQuery.whereKey("status", equalTo: "Declared")
-                declaredQuery.whereKey("challengeeId", equalTo: PFUser.currentUser()!.objectId!)
-                declaredQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-                    for challenge in objects! {
-                        
-                        let challengerId = challenge["challengerId"] as? String
-                        do {
-                            let challenger = try PFQuery.getUserObjectWithId(challengerId!)
-                            let challengerName = challenger.username
-                            
-                            let alert = UIAlertController(title: "Challenge From: \(challengerName!)",
-                                message: "Would you like to accept?",
-                                preferredStyle: UIAlertControllerStyle.Alert)
-                            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: nil))
-                            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler: nil))
-                            self.presentViewController(alert, animated: true, completion: {
-                                challenge.setObject("Accepted", forKey: "status")
-                                challenge.saveInBackground()
-                            })
-                        } catch {
-                            print("Could not find user with objectid")
-                        }
-                        
-                        challenge.saveInBackground()
-                    }
-                }
-                
-                self.startChallenges()
-                self.checkForWinners()
+                self.alwaysRunningTimer = NSTimer(timeInterval: 1.0, target: self, selector: "updateDB", userInfo: nil, repeats: true)
+                NSRunLoop.currentRunLoop().addTimer(self.alwaysRunningTimer!, forMode: NSRunLoopCommonModes)
             }
         })
     }
@@ -185,6 +186,7 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     
     func updateDB() {
         self.startChallenges()
+        self.checkForAccept()
         self.checkForWinners()
     }
     
@@ -200,7 +202,7 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     func appReopened() {
         self.isInApp = true
         if(endButton.enabled) {
-            // check if app has been resigned for more than 20 seconds
+            // check if app has been resigned for more than 10 seconds
             let oldStartTime = self.startTime
             self.startTime = NSDate().dateByAddingTimeInterval(-self.elapsedTimeBeforeLeavingApp!)
             let timeSpentResigned = self.startTime?.timeIntervalSinceDate(oldStartTime!)
