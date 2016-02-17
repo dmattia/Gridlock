@@ -15,6 +15,7 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
     var elapsedTime: NSTimeInterval?
     var elapsedTimeBeforeLeavingApp: NSTimeInterval?
     var timer: NSTimer?
+    var alwaysRunningTimer: NSTimer?
     var countUpTimer: NSTimer? // Used to add one point every second @timer runs
     var isInApp: Bool = true
     @IBOutlet weak var endButton: UIButton!
@@ -29,6 +30,21 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
             let sum = userPoints.integerValue + (userChallengePoints?.integerValue)!
             self.pointValue.title = ("\(sum)")
         }
+    }
+    
+    func startChallenges() {
+        // Start any challenge where the start time has recently passed
+        let acceptedQuery = PFQuery(className: "Challenge")
+        acceptedQuery.whereKey("status", equalTo: "Accepted")
+        acceptedQuery.whereKey("startTime", lessThan: NSDate())
+        /*
+        acceptedQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            for object in objects! {
+                object.setObject("Started", forKey: "status")
+                object.saveInBackground()
+            }
+        }
+        */
     }
     
     func checkForWinners() {
@@ -135,18 +151,9 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
                     }
                 }
                 
-                // Start any challenge where the start time has recently passed
-                let acceptedQuery = PFQuery(className: "Challenge")
-                acceptedQuery.whereKey("status", equalTo: "Accepted")
-                acceptedQuery.whereKey("startTime", lessThan: NSDate())
-                acceptedQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
-                    for object in objects! {
-                        object.setObject("Started", forKey: "status")
-                        object.saveInBackground()
-                    }
-                }
+                self.startChallenges()
+                self.checkForWinners()
             }
-            self.checkForWinners()
         })
     }
     
@@ -171,6 +178,14 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
         self.timeLabel.font = UIFont(name: "Share-TechMono", size: 60)
         
         PFUser.logOut()
+        
+        self.alwaysRunningTimer = NSTimer(timeInterval: 1.0, target: self, selector: "updateDB", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(self.alwaysRunningTimer!, forMode: NSRunLoopCommonModes)
+    }
+    
+    func updateDB() {
+        self.startChallenges()
+        self.checkForWinners()
     }
     
     func appResigned() {
@@ -203,7 +218,7 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
                 self.timeLabel.text = "0.0"
             } else {
                 let alert = UIAlertController(title: "Please stay in the App!",
-                    message: String(format: "We have subtracted %.1f seconds from your current session due to you exiting the app", elapsedTimeBeforeLeavingApp!),
+                    message: String(format: "We have subtracted %.1f seconds from your current session due to you exiting the app", timeSpentResigned!),
                     preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
@@ -231,7 +246,6 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
             let newSum = (self.pointValue.title! as NSString).integerValue + 1
             self.pointValue.title = "\(newSum)"
         }
-        self.checkForWinners()
     }
     
     @IBAction func endButtonPressed(sender: AnyObject) {
@@ -247,9 +261,11 @@ class GridlockViewController: UIViewController, PFLogInViewControllerDelegate {
             })
         }
         
-        let alert = UIAlertController(title: "Session Ended", message: String(format: "You made it %.1f seconds", self.elapsedTime!), preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        if let elapsed = self.elapsedTime {
+            let alert = UIAlertController(title: "Session Ended", message: String(format: "You made it %.1f seconds", elapsed), preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func swapButtonEnabled(alert: UIAlertAction!) {
